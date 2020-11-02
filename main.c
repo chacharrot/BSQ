@@ -6,7 +6,7 @@
 /*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:45:51 by ychoi             #+#    #+#             */
-/*   Updated: 2020/11/02 23:17:48 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/02 23:40:50 by ychoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int map_check()
 
 	//최소 한 개의 상자에 최소한 한 개의 행이 있어야 합니다.
 	//1개의 상자가
+
 }
 
 
@@ -55,19 +56,32 @@ void print_map(char map)
 	//지도를 그릴 함수.
 }
 
-int map_init()
+int **map_init(	t_map_info map_info)
 {
 	int **dp_map;
+	int i;
 
-	dp_map = (int **)malloc(sizeof(int*) * s_map_info -> y_size + 1);
-	dp_map = (int *)malloc(sizeof(int) * s_map_info -> x_size + 1);
+	dp_map = (int **)malloc(sizeof(int*) * map_info.y_size + 1);
+	i = 0;
+	while (i < map_info.y_size + 1)
+	{
+		dp_map[i] = (int *)malloc(sizeof(int) * map_info.x_size + 1);
+		i++;
+	}
+	return dp_map;
+}
 
-	return
+t_map_info map_info_init(char *argv[])
+{
+	t_map_info map_info;
+
+	return map_info;
 }
 
 int main(int argc, char *argv[])
 {
 	int i;
+	char *file_path;
 	//전달된 인자가 없는 경우에는 프로그램은 표준 입력을 바탕으로 읽을 수 있어야 합니다.??
 	if (argc == 1)
 	{
@@ -77,6 +91,7 @@ int main(int argc, char *argv[])
 	i = 1;
 	while (i < argc) //여러 파일들이 들어옴.. file1, file2, file3
 	{
+		file_path = argv[i];
 		ft_putstr(argv[i]);
 		ft_putchar('\n');
 
@@ -86,6 +101,8 @@ int main(int argc, char *argv[])
 			//인자에 대해 지도 정의
 			//지도 오류를 표시하고 다음 줄바꿈이 되고, 다음 인자를 받아야 함.
 		}
+
+		map_info_init();
 
 		// free_malloc
 		i++;

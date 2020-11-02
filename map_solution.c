@@ -6,15 +6,10 @@
 /*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:46:14 by scha              #+#    #+#             */
-/*   Updated: 2020/11/02 23:20:44 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/02 23:26:18 by ychoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_min(int a, int b)
-{
-	return (a >= b ? b : a);
-}
-​
 int	**mappuls(int **map)
 {
 	int	col;
