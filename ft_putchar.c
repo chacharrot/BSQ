@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/02 23:41:12 by scha              #+#    #+#             */
-/*   Updated: 2020/11/03 00:09:44 by scha             ###   ########.fr       */
+/*   Created: 2020/11/03 05:58:25 by ychoi             #+#    #+#             */
+/*   Updated: 2020/11/03 06:05:00 by ychoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct  s_answer_square
-{
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	size;
-}			t_answer_square;
+#include "header.h"
 
-struct (t_answer_squaare **map)
+void	ft_putchar(char c)
 {
-
+	write(1, &c, 1);
 }
