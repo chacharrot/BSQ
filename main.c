@@ -39,8 +39,6 @@ int **map_alloc(t_map_info map_info)//지도의 사이즈를 초기화
 {
 	int **map;
 	int i;
-	int x;
-	int y;
 
 	map = (int **)malloc(sizeof(int*) * map_info.y_size + 1);
 	i = 0;
@@ -61,16 +59,14 @@ void map_init_value(int **map, t_map_info map_info, char *file_path)
 
 	fd = open(file_path, 0); //5사이즈.
 	x = 0;
-	while (x < map_info.x_size) // x값 초기화cat
-		map[0][x] = 0;
+	while (x <= map_info.x_size) // x값 초기화
+		map[0][x++] = 0;
 	y = 0;
-	while (y < map_info.y_size)
-		map[y][0] = 0;
-	x = 1;
+	while (y <= map_info.y_size) // y값 초기화
+		map[y++][0] = 0;
 	y = 1;
-	printf("sdgsd");
 	while(read(fd, &buffer, 1) && buffer != '\n')
-		;
+		buffer;
 	while (y <= map_info.y_size)
 	{
 		x = 1;
@@ -120,6 +116,19 @@ t_map_info map_info_init(char *file_path)
 	return map_info;
 }
 
+void print_int(int **map, t_map_info map_info)
+{
+	int j;
+	int i;
+
+	for (i = 0; i < map_info.y_size + 1; i++) {
+		for (j = 0; j < map_info.x_size + 1; j++) {
+			printf("%3d", map[i][j]);
+		}
+		printf("\n");
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	int i;
@@ -137,7 +146,7 @@ int main(int argc, char *argv[])
 	while (i < argc) //여러 파일들이 들어옴.. file1, file2, file3
 	{
 		file_path = argv[i];
-		printf("%s", file_path);
+		printf("%s\n", file_path);
 		//ft_putstr(argv[i]);
 		//ft_putchar('\n');
 
@@ -151,8 +160,10 @@ int main(int argc, char *argv[])
 		map_info = map_info_init(file_path); //지도의 대한 기본 정보를 가져옴.
 		map = map_alloc(map_info); //맵의 사이즈만큼 배열을 동적으로 할당.
 		map_init_value(map, map_info, file_path); //값을 초기화
-		printf("mapinfo\n empty_char: %c\nobstacle_char: %c\n square_char: %c\n x_size: %d\n y_size: %d\n ", map_info.empty_char, map_info.obstacle_char, map_info.square_char, map_info.x_size, map_info.y_size);
-		solve = mappuls(map);//맵의 정답을 찾음.
+		print_int(map, map_info);
+		print_map(map, map_info);
+//		printf("mapinfo\n empty_char: %c\nobstacle_char: %c\n square_char: %c\n x_size: %d\n y_size: %d\n ", map_info.empty_char, map_info.obstacle_char, map_info.square_char, map_info.x_size, map_info.y_size);
+		solve = mappuls(map, map_info);//맵의 정답을 찾음.
 		solve_map(map, solve, map_info);
 		//map_free(); //맵을 삭제해줌.
 		i++;

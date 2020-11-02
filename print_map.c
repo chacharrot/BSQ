@@ -18,7 +18,6 @@ void	solve_map(int **map, t_solve solve, t_map_info map_info)
 	int j;
 
 	i = solve.y - solve.size + 1;
-	j = solve.x - solve.size + 1;
 	while (i <= solve.y)//m
 	{
 		j = solve.x - solve.size + 1;
@@ -29,6 +28,8 @@ void	solve_map(int **map, t_solve solve, t_map_info map_info)
 		}
 		i++;
 	}
+	print_int(map, map_info);
+	printf("\n");
 	print_map(map, map_info);
 }
 
@@ -38,17 +39,17 @@ void	print_map(int **map, t_map_info map_info)
 	int j;
 
 	i = 1;
-	j = 1;
 	while (i <= map_info.y_size)
 	{
+		j = 1;
 		while (j <= map_info.x_size)
 		{
 			if (map[i][j] == 0) // 벽일때
 				ft_putchar(map_info.obstacle_char);
-			if (map[i][j] == 1) // 비어 있을떄
-				ft_putchar(map_info.empty_char);
-			else//채워진 곳. 정사각형
+			else if (map[i][j] == map_info.square_char)
 				ft_putchar(map_info.square_char);
+			else// 비어 있을떄
+				ft_putchar(map_info.empty_char);
 			j++;
 		}
 		ft_putchar('\n');
