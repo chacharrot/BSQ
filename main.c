@@ -6,7 +6,7 @@
 /*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:45:51 by ychoi             #+#    #+#             */
-/*   Updated: 2020/11/02 23:40:50 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/02 23:56:15 by ychoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void print_map(char map)
 	//지도를 그릴 함수.
 }
 
-int **map_init(	t_map_info map_info)
+int **map_init(t_map_info map_info) //지도를 초기화
 {
 	int **dp_map;
 	int i;
@@ -69,6 +69,14 @@ int **map_init(	t_map_info map_info)
 		i++;
 	}
 	return dp_map;
+}
+
+void	free_map(int **map)
+{
+	y = 0;
+	while (map[y])
+		free(map[y++]);
+	free(map);
 }
 
 t_map_info map_info_init(char *argv[])
