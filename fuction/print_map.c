@@ -3,63 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 00:53:41 by scha              #+#    #+#             */
-/*   Updated: 2020/11/03 03:11:52 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/03 03:38:11 by ychoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	return_map(int **map, t_answer_square solve, t_map_info originmap)
+void	solve_map(int **map, t_answer_square solve, t_map_info originmap)
 {
 	int i;
 	int j;
 
-	i = 1;
-	while (i <= originmap.y_size)
+	i = solve.y - solve.size + 1;
+	j = solve.x - solve.size + 1;
+	while (i <= solve.y)//m
 	{
-		j = 1;
-		while (j <= originmap.x_size)
+		j = solve.x - solve.size + 1;
+		while (j <= solve.x)
 		{
-			if (map[i][j] == 0)
-				map[i][j] == originmap.obstacle_char;
-			else
-				map[i][j] == originmap.empty_char;
+			map[i][j] = originmap.square_char;// x가 들어감.
 			j++;
 		}
 		i++;
 	}
+	print_map(map, originmap);
 }
 
-int		**solve_map(int **map, t_answer_square solve, t_map_info originmap)
+void	print_map(int **map, t_map_info originmap)
 {
 	int i;
 	int j;
 
-	i = 0;
-	while (solve.y - i++ && i < size)
-	{
-		j = 0;
-		while (solve.x - j && j < size)
-			map[solve.y - i][solve.x - j++] = square_char;
-	}
-	return (map);
-}
-
-void	print_map(**map,t_map_info originmap)
-{
-	int i;
-	int j;
-	
 	i = 1;
 	j = 1;
-	while(i <= originmap.y_size)
+	while (i <= originmap.y_size)
+	{
+		while (j <= originmap.x_size)
 		{
-			while (j <= originmap.x_size)
-			{
-				write(1, map[i][j++],1);
-			}
-			write(1, "\n", 1);
-			i++;
+			if (map[i][j] == 0) // 벽일때
+				ft_putchar(originmap.obstacle_char);
+			if (map[i][j] == 1) // 비어 있을떄
+				ft_putchar(originmap.empty_char);
+			else//채워진 곳. 정사각형
+				ft_putchar(originmap.square_char);
+			j++;
 		}
+		ft_putchar('\n');
+		i++;
+	}
 }
