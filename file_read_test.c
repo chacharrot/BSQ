@@ -15,6 +15,6 @@ void	display(char *filename)
 }
 int		main(int argc, char *argv[])
 {
-	display("c");
+	display("a");
 	return (0);
 }

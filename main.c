@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:45:51 by ychoi             #+#    #+#             */
-/*   Updated: 2020/11/02 23:56:15 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/03 00:58:04 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct  s_map_info
 	unsigned int	y_size; // row
 	char	empty_char;
 	char	obstacle_char;
+	char	square_char;
 }			t_map_info;
 
 
