@@ -14,6 +14,10 @@
 # define HEADER_H
 # include <unistd.h>
 #include <stdio.h> //지워야함
+#include <fcntl.h>
+#include <stdlib.h>
+
+#define BUF_SIZE 1024
 
 typedef	struct	s_solve
 {
@@ -32,13 +36,13 @@ typedef struct	s_map_info
 }				t_map_info;
 
 int		ft_min(int a, int b);
-int		ft_max(int a, int b);
 
 t_solve	mappuls(int **map, t_map_info map_info);
 void	solve_map(int **map, t_solve solve, t_map_info map_info);
 void	print_map(int **map, t_map_info map_info);
 
 void	ft_putchar(char c);
+int check(char *file_path);
 
 void print_int(int **map, t_map_info map_info);//지워야함.
 

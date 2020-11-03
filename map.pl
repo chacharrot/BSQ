@@ -7,10 +7,10 @@ print "$y.ox\n";
 for (my $i = 0; $i < $y; $i++) {
 	for (my $j = 0; $j < $x; $j++) {
 		if (int(rand($y) * 2) < $density) {
-			print ".";
+			print "o";
 		}
 		else {
-			print "o";
+			print ".";
 		}
 	}
 	print "\n";
