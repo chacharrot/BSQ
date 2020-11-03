@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include "header.h"
 #include <fcntl.h>
+#define BUF_SIZE 1024
 
 //int map_check()
 //{
@@ -66,7 +67,7 @@ void map_init_value(int **map, t_map_info map_info, char *file_path)
 		map[y++][0] = 0;
 	y = 1;
 	while(read(fd, &buffer, 1) && buffer != '\n')
-		buffer;
+		;
 	while (y <= map_info.y_size)
 	{
 		x = 1;
@@ -83,35 +84,86 @@ void map_init_value(int **map, t_map_info map_info, char *file_path)
 	close(fd);
 }
 
-void	free_map(int **map)
+void	free_map(int **map, t_map_info map_info)
 {
-	//y = 0;
-	//while (map[y])
-	//	free(map[y++]);
-	//free(map);
+	int i;
+
+	i = 0;
+	while (i < map_info.y_size + 1)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
+int		is_numeric(char c)
+{
+	if (c < '0' || '9' < c)
+		return (0);
+	return (1);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while (n != 0)
+	{
+		if (src[j] == '\0')
+		{
+			dest[i] = '\0';
+			i++;
+		}
+		else
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		n--;
+	}
+	return (dest);
+}
+
+unsigned int ft_n_atoi(char *str, int end)// 0부터 ~ end까지 int 값을 반환함.
+{
+	unsigned int num; // 0 ~ 1 . 0 과 1 을 가지고 atoi 함수를 만들어야함.
+
+	num = 0;// size 까지 .. 0
+	while (*str != '\0' && 0 <= end)
+	{
+		num = num * 10 + (*str - '0');
+		str++;
+		end--;
+	}
+	return num;
 }
 
 t_map_info map_info_init(char *file_path)
 {
 	t_map_info map_info;
 	int fd;
-	char buffer;
+	char buffer[BUF_SIZE];
 	int x_len;
 
 	fd = open(file_path, 0); //5사이즈.
-	read(fd, &buffer, 1);
-	map_info.y_size = buffer - '0';
-	read(fd, &buffer, 1);
-	map_info.empty_char = buffer;
-	read(fd, &buffer, 1);
-	map_info.obstacle_char = buffer;
-	read(fd, &buffer, 1);
-	map_info.square_char = buffer;
-	read(fd, &buffer, 1);//개행까지 읽고
-	x_len = 0;
-	while(read(fd, &buffer, 1) && buffer != '\n') //첫째줄만 읽어옴.
+	read(fd, buffer, BUF_SIZE); // 버퍼 사이즈 만큼 읽으면 ..?
+	int line_len = 0;
+	while (buffer[line_len] != '\n')
+		line_len++;
+	map_info.square_char = buffer[line_len - 1];
+	map_info.obstacle_char = buffer[line_len - 2];
+	map_info.empty_char = buffer[line_len - 3];
+	map_info.y_size = ft_n_atoi(buffer, line_len - 4); //0부터 line_len - 4까지. 즉 0 1
+
+	x_len = line_len + 1; //두번쨰 라인 수 세기
+	while(buffer[x_len] != '\n') //첫째줄만 읽어옴.
 		x_len++;
-	map_info.x_size = x_len;
+	map_info.x_size = x_len - (line_len + 1);
 	close(fd); //파일 닫기.
 	return map_info;
 }
@@ -166,6 +218,7 @@ int main(int argc, char *argv[])
 		solve = mappuls(map, map_info);//맵의 정답을 찾음.
 		solve_map(map, solve, map_info);
 		//map_free(); //맵을 삭제해줌.
+		free_map(map, map_info);
 		i++;
 	}
 	return (0);
