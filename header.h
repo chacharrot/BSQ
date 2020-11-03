@@ -40,6 +40,7 @@ int		ft_min(int a, int b);
 t_solve	mappuls(int **map, t_map_info map_info);
 void	solve_map(int **map, t_solve solve, t_map_info map_info);
 void	print_map(int **map, t_map_info map_info);
+t_map_info map_info_init(char *file_path);
 
 void	ft_putchar(char c);
 int check(char *file_path);

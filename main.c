@@ -119,11 +119,24 @@ void print_int(int **map, t_map_info map_info)
 	int j;
 	int i;
 
-	for (i = 0; i < map_info.y_size + 1; i++) {
-		for (j = 0; j < map_info.x_size + 1; j++) {
+	for (i = 0; i <= map_info.y_size; i++) {
+		for (j = 0; j <= map_info.x_size; j++) {
 			printf("%3d", map[i][j]);
 		}
 		printf("\n");
+	}
+}
+
+char	*read_input(void)
+{
+	int		i;
+	int r;
+	char buffer;
+
+	r = 1;
+	while (r)
+	{
+		r = read(0, &buffer, 1);
 	}
 }
 
@@ -132,15 +145,16 @@ int main(int argc, char *argv[])
 	int i;
 	char *file_path;
 	int **map;
+	int r;
 	t_map_info map_info;
 	t_solve solve;
 
 	//전달된 인자가 없는 경우(파일)에는 프로그램은 표준 입력을 바탕으로 (파일)을 읽을 수 있어야 합니다.??
-	if (argc == 1)
-	{
-//		read(0,&ch1,sizeof(ch1));
-		//표준 입력을 바탕으로 읽어야 함.
-	}
+//	if (argc == 1)
+//	{
+//		read_input();
+//		//표준 입력을 바탕으로 읽어야 함.
+//	}
 	i = 1;
 	while (i < argc) //여러 파일들이 들어옴.. file1, file2, file3
 	{
@@ -151,7 +165,7 @@ int main(int argc, char *argv[])
 
 		if (check(file_path))
 		{
-			write(1, "MapError" ,9);
+			write(2, "map error\n" ,10);
 			//인자에 대해 지도 정의
 			//지도 오류를 표시하고 다음 줄바꿈이 되고, 다음 인자를 받아야 함.
 		}
