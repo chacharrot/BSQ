@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-void	solve_map(int **map, t_solve solve, t_map_info map_info)
+void	solve_map(char **map, t_solve solve, t_map_info map_info)
 {
 	int i;
 	int j;
@@ -28,12 +28,10 @@ void	solve_map(int **map, t_solve solve, t_map_info map_info)
 		}
 		i++;
 	}
-	print_int(map, map_info);
-	printf("\n");
 	print_map(map, map_info);
 }
 
-void	print_map(int **map, t_map_info map_info)
+void	print_map(char **map, t_map_info map_info)
 {
 	int i;
 	int j;
@@ -54,5 +52,18 @@ void	print_map(int **map, t_map_info map_info)
 		}
 		ft_putchar('\n');
 		i++;
+	}
+}
+
+void print_int(char **map, t_map_info map_info)
+{
+	int j;
+	int i;
+
+	for (i = 0; i <= map_info.y_size; i++) {
+		for (j = 0; j <= map_info.x_size; j++) {
+			printf("%3d", map[i][j]);
+		}
+		printf("\n");
 	}
 }

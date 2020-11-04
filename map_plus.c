@@ -12,14 +12,9 @@
 
 #include "header.h"
 
-int		ft_min(int a, int b)
+char	ft_min(char a, char b)
 {
 	return (a >= b ? b : a);
-}
-
-int		ft_max(int a, int b)
-{
-	return (a >= b ? a : b);
 }
 
 void	insert_solve(t_solve *solve, int size, int row, int col)
@@ -29,14 +24,14 @@ void	insert_solve(t_solve *solve, int size, int row, int col)
 	solve->size = size;
 }
 
-t_solve	mappuls(int **map, t_map_info map_info)
+struct	s_solve	map_plus(char **map, t_map_info map_info)
 {
 	int		i;
 	int		j;
-	int		temp;
+	char	temp;
 	t_solve	solve;
 
-	solve.size = 0; //최대 크기를 0으로 초기화. 0은 정답이 없음을 의미
+	solve.size = 0;
 	i = 1;
 	while (i <= map_info.y_size)
 	{

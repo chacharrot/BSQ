@@ -21,30 +21,51 @@
 
 typedef	struct	s_solve
 {
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	size;
+	int		x;
+	int		y;
+	int		size;
 }				t_solve;
 
 typedef struct	s_map_info
 {
-	unsigned int	x_size; //
-	unsigned int	y_size; // row
-	char			empty_char; //비어있는 캐릭터, 1
-	char			obstacle_char; // 장애물. 0
-	char			square_char;// 표시할거
+	int		x_size; //
+	int		y_size; // row
+	char	empty_char; //비어있는 캐릭터, 1
+	char	obstacle_char; // 장애물. 0
+	char	square_char;// 표시할거
+	int 	start_xy;
 }				t_map_info;
 
-int		ft_min(int a, int b);
+void				map_zero_padding(char **map, t_map_info map_info);
+void				map_init_value(char *reads, char **map, t_map_info map_info);
+struct	s_map_info	map_info_init(char *reads);
+int					main(int argc, char *argv[]);
 
-t_solve	mappuls(int **map, t_map_info map_info);
-void	solve_map(int **map, t_solve solve, t_map_info map_info);
-void	print_map(int **map, t_map_info map_info);
-t_map_info map_info_init(char *file_path);
+int 				same_line_and_char_validation(char *reads);
+int 				check(char *reads);
 
-void	ft_putchar(char c);
-int check(char *file_path);
+int					first_line_len_check(char *read);
+int					first_line_duplication_check(char *reads);
+int					first_line_chek_number(char *reads);
+int					minimal_size_check(char *reads);
 
-void print_int(int **map, t_map_info map_info);//지워야함.
+int					ft_is_numeric(char c);
+int					ft_is_printable(char c);
+
+int					ft_n_atoi(char *str, int end);
+void				ft_putchar(char c);
+
+char				ft_min(char a, char b);
+void				insert_solve(t_solve *solve, int size, int row, int col);
+struct	s_solve		map_plus(char **map, t_map_info map_info);
+
+void				free_map(char **map, t_map_info map_info);
+void				free_reads(char *reads);
+char 				**map_alloc(t_map_info map_info);
+char				*file_read_memory(char *file_path);
+
+void				solve_map(char **map, t_solve solve, t_map_info map_info);
+void				print_map(char **map, t_map_info map_info);
+void				print_int(char **map, t_map_info map_info);
 
 #endif
