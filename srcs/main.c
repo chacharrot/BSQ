@@ -72,31 +72,46 @@ struct	s_map_info	map_info_init(char *reads)
 	return (map_info);
 }
 
-int					main(int argc, char *argv[])
+
+int main_while(char *reads)
 {
-	int			i;
-	char		*reads;
 	char		**map;
 	t_map_info	map_info;
 	t_solve		solve;
 
-	i = 0;
-	while (++i < argc)
+	map_info = map_info_init(reads);
+	map = map_alloc(map_info);
+	map_init_value(reads, map, map_info);
+	solve = map_plus(map, map_info);
+	solve_map(map, solve, map_info);
+	free_map(map, map_info);
+	free_reads(reads);
+}
+
+int					main(int argc, char *argv[])
+{
+	int			i;
+	char		*reads;
+
+	i = 1;
+	if (argc == 1)
 	{
-		reads = file_read_memory(argv[i]);
-		if (reads == 0 || check(reads))
+		ft_read_input();
+	}
+	else
+	{
+		while (i < argc)
 		{
-			write(2, "map error\n", 10);
+			reads = file_read_memory(argv[i]);
+			if (reads == 0 || check(reads))
+			{
+				write(2, "map error\n", 10);
+				i++;
+				continue;
+			}
+			main_while(reads);
 			i++;
-			continue;
 		}
-		map_info = map_info_init(reads);
-		map = map_alloc(map_info);
-		map_init_value(reads, map, map_info);
-		solve = map_plus(map, map_info);
-		solve_map(map, solve, map_info);
-		free_map(map, map_info);
-		free_reads(reads);
 	}
 	return (0);
 }
