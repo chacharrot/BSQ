@@ -6,7 +6,7 @@
 /*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:45:51 by ychoi             #+#    #+#             */
-/*   Updated: 2020/11/05 07:09:45 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/05 08:14:43 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ struct	s_map_info	map_info_init(char *reads)
 	return (map_info);
 }
 
-
-int main_while(char *reads)
+int					main_while(char *reads)
 {
 	char		**map;
 	t_map_info	map_info;
@@ -86,6 +85,7 @@ int main_while(char *reads)
 	solve_map(map, solve, map_info);
 	free_map(map, map_info);
 	free_reads(reads);
+	return (0);
 }
 
 int					main(int argc, char *argv[])
@@ -104,12 +104,13 @@ int					main(int argc, char *argv[])
 		{
 			reads = file_read_memory(argv[i]);
 			if (reads == 0 || check(reads))
-			{
 				write(2, "map error\n", 10);
-				i++;
-				continue;
+			else
+			{
+				main_while(reads);
+				if (i < argc - 1)
+					write(1, "\n", 1);
 			}
-			main_while(reads);
 			i++;
 		}
 	}

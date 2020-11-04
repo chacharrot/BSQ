@@ -6,7 +6,7 @@
 /*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 20:57:16 by scha              #+#    #+#             */
-/*   Updated: 2020/11/05 07:40:38 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/05 08:09:32 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		same_line_and_char_validation(char *reads, t_map_info map_info)
 	int				i;
 	int				line_len;
 
+	g_y_count = 0;
 	i = map_info.start_xy;
 	line_len = 0;
 	while (reads[i])
