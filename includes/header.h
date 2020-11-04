@@ -35,6 +35,8 @@ typedef struct		s_map_info
 	int				start_xy;
 }					t_map_info;
 
+int					g_y_count;
+
 void				map_zero_padding(char **map, t_map_info map_info);
 void				map_init_value(char *reads, char **map,
 										t_map_info map_info);
