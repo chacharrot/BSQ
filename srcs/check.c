@@ -6,7 +6,7 @@
 /*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 20:57:16 by scha              #+#    #+#             */
-/*   Updated: 2020/11/05 07:18:52 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/05 07:40:38 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int		same_line_and_char_validation(char *reads, t_map_info map_info)
 
 int		check(char *reads)
 {
+	t_map_info		map_info;
+
 	if (first_line_len_check(reads) == 1)
 		return (1);
 	if (first_line_duplication_check(reads) == 1)
@@ -57,8 +59,6 @@ int		check(char *reads)
 	if (first_line_chek_number(reads) == 1)
 		return (1);
 	if (minimal_size_check(reads) == 1)
-		return (1);
-	if (same_line_and_char_validation(reads) == 1)
 		return (1);
 	map_info = map_info_init(reads);
 	if (same_line_and_char_validation(reads, map_info) == 1)

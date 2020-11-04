@@ -6,7 +6,7 @@
 /*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 04:32:03 by ychoi             #+#    #+#             */
-/*   Updated: 2020/11/05 07:20:04 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/05 07:38:34 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void				map_init_value(char *reads, char **map,
 struct s_map_info	map_info_init(char *reads);
 int					main(int argc, char *argv[]);
 
-int					same_line_and_char_validation(char *reads);
+int					same_line_and_char_validation(char *reads,
+												t_map_info map_info);
+int					if_map_info_check(char *reads, int i, t_map_info map_info);
 int					check(char *reads);
 
 int					first_line_len_check(char *read);
