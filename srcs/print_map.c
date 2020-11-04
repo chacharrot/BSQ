@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 00:53:41 by scha              #+#    #+#             */
-/*   Updated: 2020/11/03 05:45:37 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/05 06:57:12 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	solve_map(char **map, t_solve solve, t_map_info map_info)
 	int j;
 
 	i = solve.y - solve.size + 1;
-	while (i <= solve.y)//m
+	while (i <= solve.y)
 	{
 		j = solve.x - solve.size + 1;
 		while (j <= solve.x)
 		{
-			map[i][j] = map_info.square_char;// x가 들어감.
+			map[i][j] = map_info.square_char;
 			j++;
 		}
 		i++;
@@ -42,28 +42,15 @@ void	print_map(char **map, t_map_info map_info)
 		j = 1;
 		while (j <= map_info.x_size)
 		{
-			if (map[i][j] == 0) // 벽일때
+			if (map[i][j] == 0)
 				ft_putchar(map_info.obstacle_char);
 			else if (map[i][j] == map_info.square_char)
 				ft_putchar(map_info.square_char);
-			else// 비어 있을떄
+			else
 				ft_putchar(map_info.empty_char);
 			j++;
 		}
 		ft_putchar('\n');
 		i++;
-	}
-}
-
-void print_int(char **map, t_map_info map_info)
-{
-	int j;
-	int i;
-
-	for (i = 0; i <= map_info.y_size; i++) {
-		for (j = 0; j <= map_info.x_size; j++) {
-			printf("%3d", map[i][j]);
-		}
-		printf("\n");
 	}
 }

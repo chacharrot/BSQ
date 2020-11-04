@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   std_read.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/05 06:59:28 by scha              #+#    #+#             */
+/*   Updated: 2020/11/05 07:00:53 by scha             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-int			ft_argc_main(char *reads)
+int		ft_argc_main(char *reads)
 {
-	char **map;
+	char			**map;
+	t_map_info		map_info;
+	t_solve			solve;
 
-	t_map_info map_info;
-	t_solve solve;
-	if(reads == 0 || check(reads))
+	if (reads == 0 || check(reads))
 	{
-		write(2, "map error\n" ,10);
+		write(2, "map error\n", 10);
 		return (0);
 	}
 	map_info = map_info_init(reads);

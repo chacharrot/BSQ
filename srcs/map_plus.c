@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mapplus.c                                          :+:      :+:    :+:   */
+/*   map_plus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychoi <ychoi@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 22:46:14 by scha              #+#    #+#             */
-/*   Updated: 2020/11/03 05:47:44 by ychoi            ###   ########.fr       */
+/*   Updated: 2020/11/05 06:51:40 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	ft_min(char a, char b)
+char			ft_min(char a, char b)
 {
 	return (a >= b ? b : a);
 }
 
-void	insert_solve(t_solve *solve, int size, int row, int col)
+void			insert_solve(t_solve *solve, int size, int row, int col)
 {
 	solve->x = row;
 	solve->y = col;
