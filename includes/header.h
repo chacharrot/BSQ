@@ -68,4 +68,7 @@ void				solve_map(char **map, t_solve solve, t_map_info map_info);
 void				print_map(char **map, t_map_info map_info);
 void				print_int(char **map, t_map_info map_info);
 
+int					ft_argc_main(char *reads);
+int					ft_read_input(void);
+
 #endif
