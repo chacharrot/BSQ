@@ -6,7 +6,7 @@
 /*   By: scha <scha@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 20:57:16 by scha              #+#    #+#             */
-/*   Updated: 2020/11/05 06:48:34 by scha             ###   ########.fr       */
+/*   Updated: 2020/11/05 07:18:52 by scha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,22 @@ int		check(char *reads)
 {
 	if (first_line_len_check(reads) == 1)
 	{
-		printf("첫번째 라인 유효성 체크에서 에러");
 		return (1);
 	}
 	if (first_line_duplication_check(reads) == 1)
 	{
-		printf("첫번쨰 라인 중복문자에서 에러");
 		return (1);
 	}
 	if (first_line_chek_number(reads) == 1)
 	{
-		printf("첫번쨰 라인의 숫자 에러");
 		return (1);
 	}
 	if (minimal_size_check(reads) == 1)
 	{
-		printf("최소 한 개의 케이스에 최소한 한 개의 행 에러");
 		return (1);
 	}
 	if (same_line_and_char_validation(reads) == 1)
 	{
-		printf("모든 행과 열이 같은 수인지");
 		return (1);
 	}
 	return (0);
